@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ToDoListAsync.Models.ToDoListTable>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">新增代辦事項</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Task)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("刪除", "Delete", new { id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
